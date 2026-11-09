@@ -849,7 +849,8 @@ const floorGeo = new THREE.PlaneGeometry(W + 36, D + 34, 200, 150);
 floorGeo.rotateX(-Math.PI / 2);
 {
   const pos = floorGeo.attributes.position, col = new Float32Array(pos.count * 3);
-  const sand = toLinear(hexToRgb("#ecd9a8")), sand2 = toLinear(hexToRgb("#d9c08a")),
+  /* light, slightly yellow sand */
+  const sand = toLinear(hexToRgb("#f8ecbc")), sand2 = toLinear(hexToRgb("#f0dfa2")),
         rock = toLinear(hexToRgb("#8a7d74")), moss = toLinear(hexToRgb("#5f8f6b"));
   for (let i = 0; i < pos.count; i++) {
     const x = pos.getX(i), z = pos.getZ(i), r = rockHeight(x, z), y = floorHeight(x, z);
@@ -1020,10 +1021,11 @@ function placeOnReef(r, allowRock) {
   return null;
 }
 
+/* Pastel and candy colors: [body, tentacle tips]. */
 const ANEMONE_COLORS = [
-  ["#f472b6", "#fde2f0"], ["#a78bfa", "#ede9fe"], ["#34d399", "#d1fae5"], ["#fb923c", "#ffedd5"],
-  ["#f43f5e", "#ffe4e6"], ["#c084fc", "#f3e8ff"], ["#22d3ee", "#cffafe"], ["#facc15", "#fef9c3"],
-  ["#fda4af", "#fff1f2"], ["#86efac", "#f0fdf4"], ["#e879f9", "#fae8ff"], ["#fbbf24", "#fff7ed"]
+  ["#ff9ecf", "#ffe0f0"], ["#c8b6ff", "#f1ecff"], ["#9ef0c9", "#e6fff3"], ["#ffbe98", "#fff0e5"],
+  ["#fff08a", "#fffbe0"], ["#a8dcff", "#e8f6ff"], ["#e3a8ff", "#f8ecff"], ["#ff9aa2", "#ffe5e8"],
+  ["#9ad7ff", "#e5f5ff"], ["#ffd59e", "#fff3e0"], ["#ffb3c6", "#fff0f4"], ["#8ff0e4", "#e0fffb"]
 ];
 
 /* ---------- anemones ---------- */
@@ -1120,9 +1122,10 @@ function instanced(geo, mat, list) {
 }
 
 /* ---------- corals ---------- */
+/* Pastel and candy colors for each coral kind. */
 const CORAL_COLORS = {
-  brain: ["#d9a066", "#b7c97a", "#e8b4a0"], branch: ["#f4a6b8", "#c9a7e8", "#f6c177"],
-  plate: ["#7fb7a4", "#d8a47f", "#a3b6e0"], fan: ["#a855f7", "#f97316", "#facc15"]
+  brain: ["#ffcf9e", "#ffc6df", "#d7f5b3"], branch: ["#ffb3d1", "#c9b8ff", "#ffe08a"],
+  plate: ["#a8f0d8", "#ffd1b3", "#b8d4ff"], fan: ["#e2b0ff", "#ffb38a", "#fff09a"]
 };
 const corals = [];
 {
